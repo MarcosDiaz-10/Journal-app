@@ -36,4 +36,21 @@ export const noteEmpty = {
     date: 1000,
     imageUrls: []
 };
+export const notesFirebase = 
+    [
+        {
+            id:'g99WiCbGBPQWKCNJOif9',
+            title: 'Prueba nota 1',
+            body: 'Este es el body de la prueba nota 1' ,
+            date:'1667359225585',
+            imageUrls: ['https://prueba1.png'] 
+        },
+        {
+            id:'kpL75rNb8JTqvC9lUnlK',
+            title: 'Prueba nota 2',
+            body: 'Este es el body de la prueba nota 1' ,
+            date:'1667359242019',
+            imageUrls: [] 
+        }
+    ];
     

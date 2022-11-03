@@ -52,7 +52,7 @@ export const startSaveNote = () => {
       const refDoc = doc( FirebaseDB, `${uid}/journal/notes/${ note.id }`);
 
       await setDoc( refDoc, noteToFireStore, { merge: true})
-
+      
       dispatch( updateNote(note) );
     
    }
@@ -68,8 +68,11 @@ export const startUploadingFiles = (files = []) => {
       for (const file of files) {
          fileUploadPromises.push( fileUpload(file) )
       }
-        
+      
+      
+      
       const photosUrls = await Promise.all( fileUploadPromises );
+      
       
       dispatch(setPhotosToActiveNote( photosUrls ));
    }

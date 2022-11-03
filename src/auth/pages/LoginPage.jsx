@@ -20,12 +20,15 @@ export const LoginPage = () => {
 
   const dispatch = useDispatch();
   const { status, errorMessage } = useSelector( state => state.auth ); 
+  
   const { email, password, onInputChange, onResetForm, formState, emailValid, passwordValid, isFormValid } = useForm(formData, formValidations) //{ email: 'marcosdiaz@gmail.com', password: '123456'}
 
   const isAuthenticating = useMemo( () => status === 'checking', [status] )
 
   const onSubmit = ( e ) => {
     e.preventDefault();
+    
+    
     
 
     if( !isFormValid ) return;
@@ -35,6 +38,7 @@ export const LoginPage = () => {
   }
 
   const onGoogleSignIn = () => {
+      
       dispatch( startGoogleSignIn())
       
   }
@@ -43,7 +47,7 @@ export const LoginPage = () => {
   return (
     
     <AuthLayout title='Login'>
-       <form onSubmit={ onSubmit }>
+       <form onSubmit={ onSubmit } aria-label="submit-form" >
             <Grid container>
               <Grid item xs={ 12 } sx={{ mt: 2}}>
                 <TextField 
@@ -63,6 +67,9 @@ export const LoginPage = () => {
                 placeholder="Contraseña"
                 fullWidth
                 name='password'
+                inputProps={{
+                  'aria-label': 'password'
+                }}
                 value={ password }
                 onChange={ onInputChange }
                 />        
@@ -91,6 +98,7 @@ export const LoginPage = () => {
                   </Grid>
                   <Grid item xs={ 12 } sm={ 6 }>
                     <Button 
+                      aria-label="btn-google"
                       onClick={ onGoogleSignIn } 
                       variant="contained" 
                       fullWidth

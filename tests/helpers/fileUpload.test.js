@@ -20,7 +20,7 @@ describe('Pruebas en fileUpload', () => {
         const file = new File([blob], 'foto.jpg');
 
         const url = await fileUpload( file );
-
+        
         expect( typeof url ).toBe('string');
         
         // console.log(url);
