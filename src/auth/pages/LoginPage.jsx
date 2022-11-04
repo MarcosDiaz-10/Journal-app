@@ -14,16 +14,17 @@ const formValidations = {
   password: [(value) => value.length >= 6, 'El password debe de tener mas de 6 letras'],
 };
 
-const formData = { email: '', password: ''}
+
 
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
   const { status, errorMessage } = useSelector( state => state.auth ); 
   
-  const { email, password, onInputChange, onResetForm, formState, emailValid, passwordValid, isFormValid } = useForm(formData, formValidations) //{ email: 'marcosdiaz@gmail.com', password: '123456'}
+  const { email, password, onInputChange, onResetForm, formState, emailValid, passwordValid, isFormValid } = useForm({ email: '', password: ''}, formValidations) //{ email: 'marcosdiaz@gmail.com', password: '123456'}
 
   const isAuthenticating = useMemo( () => status === 'checking', [status] )
+
 
   const onSubmit = ( e ) => {
     e.preventDefault();
@@ -42,7 +43,6 @@ export const LoginPage = () => {
       dispatch( startGoogleSignIn())
       
   }
-
 
   return (
     
